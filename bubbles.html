@@ -22,7 +22,9 @@ function setup() {
         var bubble = {
             x: random(width),
             y: random(height),
-            radius: random(50, 100)
+            //radius: random(50, 100)
+            // to change the sizes of bubbles, the size of the radii can either be bigger or smaller
+            radius: random(20, 200)
         };
         bubbles.push(bubble);
     }
@@ -37,15 +39,22 @@ function draw() {
         if (dist(mouseX, mouseY, bubble.x, bubble.y) < bubble.radius) {
             if (mouseIsPressed) {
                 bubbles.splice(i, 1); // remove this bubble!
+                //not bubbles.push //NEED HELP
             }
-            fill(255, 200, 200, 200);
+            //fill(255, 200, 200, 200);
+            // line 44 is responsible for the color of the circle before the mouse hovers over
+            // last number is in charge of transparency
+            fill (255, 100, 50, 200)
         } else {
             fill(255, 220, 200, 200);
         }
 
         ellipse(bubble.x, bubble.y, bubble.radius*2);
-        bubble.x += random(-1,1);
-        bubble.y += random(-1,1);
+        //bubble.x += random(-1,1);
+        //bubble.y += random(-1,1);
+        // to make the bubbles move more vigorously, the x- and y-points need to be bigger but still same digits
+        bubble.x += random(-10,10);
+        bubble.y += random(-10,10);
     }
 }
 
